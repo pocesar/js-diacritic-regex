@@ -14,6 +14,13 @@ Suppose you have the word *résumé* but written improperly in the database as *
 import { toRegex } from 'ascii-to-regex';
 
 toRegex('résumé') // => /r[eéèêë]sum[eéèêë]/i;
+toRegex('résumé', {flags: 'mu'}) // => /r[eéèêë]sum[eéèêë]/mu;
+toRegex('résumé', {
+  flags: '',
+  mappings: {
+    'é': ['e','é','É']
+  }
+}) // => /r[eéÉ]sum[eéÉ]/;
 ```
 
 ## License
