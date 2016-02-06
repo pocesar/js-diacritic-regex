@@ -1,10 +1,10 @@
-# ASCII to Regex
+# Diacritic regex
 
-Creates the inverse of transliterated string to a regex. What? Basically, accent insensitiveness
+Creates the inverse of transliterated string to a regex. What? Basically, a regex that is diacritic insensitive
 
 ## Why?
 
-Sometimes the user will search for *blasé*, but your database is dumb and doesn't understand collations and accent insensitiveness, but it can compare stuff using regex, so there ya go.
+Sometimes the user will search for *blasé*, but your database is dumb and doesn't understand collations and diacritic insensitiveness, but it can compare stuff using regex, so there ya go.
 
 ## How?
 
