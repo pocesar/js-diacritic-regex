@@ -11,7 +11,7 @@ Sometimes the user will search for *blasé*, but your database is dumb and doesn
 Suppose you have the word *résumé* but written improperly in the database as *resume*. The user is clever, and types it correctly into the search box. Gets nothing. How to search for all the weird cases people mistype stuff when comes to accents?
 
 ```es6
-import { toRegex } from 'ascii-to-regex';
+import { toRegex } from 'diacritic-regex';
 
 toRegex('résumé') // => /r[eéèêë]sum[eéèêë]/i;
 toRegex('résumé', {flags: 'mu'}) // => /r[eéèêë]sum[eéèêë]/mu;
