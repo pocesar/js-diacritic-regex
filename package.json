@@ -1,0 +1,31 @@
+{
+  "name": "diacritic-regex",
+  "version": "0.1.0",
+  "description": "String to a regex that is diacritic insensitive",
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha -R spec test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocesar/js-diacritic-regex.git"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "chai": "^3.5.0"
+  },
+  "keywords": [
+    "diacritic",
+    "regex",
+    "string",
+    "ascii",
+    "collation"
+  ],
+  "author": "Paulo Cesar <https://github.com/pocesar>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pocesar/js-diacritic-regex/issues"
+  },
+  "typings": "./index.d.ts",
+  "homepage": "https://github.com/pocesar/js-diacritic-regex#readme"
+}
