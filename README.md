@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/pocesar/js-diacritic-regex.svg?branch=master)](https://travis-ci.org/pocesar/js-diacritic-regex)
 [![Coverage Status](https://coveralls.io/repos/github/pocesar/js-diacritic-regex/badge.svg?branch=master)](https://coveralls.io/github/pocesar/js-diacritic-regex?branch=master)
+
 [![NPM](https://nodei.co/npm/diacritic-regex.png)](https://nodei.co/npm/diacritic-regex/)
 
 # Diacritic regex
@@ -28,7 +29,7 @@ toRegex({
 
 toString({
     mappings: {
-        'u': ''
+        'u': 'u'
     }
 })('résumé') // => 'r[eEÉéÈèÊêëË]sum[eEÉéÈèÊêëË]'
 ```
