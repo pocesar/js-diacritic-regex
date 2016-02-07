@@ -34,8 +34,6 @@ toString({
 })('résumé') // => 'r[eEÉéÈèÊêëË]sum[eEÉéÈèÊêëË]'
 ```
 
-Usage with sifter
-
 ## Compatibility
 
 Work in node and the browser, but needs polyfills for `Array.reduce`, `Array.map` and `Object.keys`

@@ -1,0 +1,28 @@
+{
+  "name": "diacritic-regex",
+  "description": "String to a regex that is diacritic insensitive",
+  "main": "./index.js",
+  "authors": [
+    "Paulo Cesar <https://github.com/pocesar>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "diacritic",
+    "regex",
+    "string",
+    "ascii",
+    "collation"
+  ],
+  "homepage": "https://github.com/pocesar/js-diacritic-regex",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
