@@ -24,18 +24,20 @@
         }
         if (innerMappings) {
             for (var mapping in innerMappings) {
-                base[innerMappings[mapping]] = innerMappings[mapping];
+                base[mapping] = innerMappings[mapping];
             }
         }
-        return Object.keys(base).map(function (e) {
-            return base[e];
-        });
+        return base;
     }
     function replacer(input, mappings) {
         return input.split('').map(function (letter) {
-            return mappings.reduce(function (e, mapping) {
-                return mapping && mapping !== letter && mapping.indexOf(letter) !== -1 ? "[" + mapping + "]" : e;
-            }, letter);
+            for (var mapping in mappings) {
+                if (mapping && mapping !== mappings[mapping] && (mapping === letter || mappings[mapping].indexOf(letter) !== -1)) {
+                    letter = Array.isArray(mappings[mapping]) ? mappings[mapping].join('') : "[" + mappings[mapping] + "]";
+                    break;
+                }
+            }
+            return letter;
         }).join('');
     }
     /** Generate a function that returns a RegExp, that can be reused with the same options */

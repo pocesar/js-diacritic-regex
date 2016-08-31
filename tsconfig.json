@@ -3,6 +3,9 @@
         "module": "umd",
         "target": "es5",
         "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": true,
+        "noUnusedLocals": true,
         "rootDir": ".",
         "outDir": ".",
         "sourceMap": false,
@@ -10,5 +13,8 @@
     },
     "exclude": [
         "node_modules"
+    ],
+    "files": [
+        "index.ts"
     ]
 }

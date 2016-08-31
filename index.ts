@@ -1,7 +1,7 @@
 'use strict';
 
 export interface Mappings {
-    [index: string]: string;
+    [index: string]: string|string[];
 }
 
 export const mappings: Mappings = {
@@ -15,20 +15,18 @@ export const mappings: Mappings = {
     'y': String.fromCharCode(89,121,221,253,159,255)
 }
 
-export interface RegexOptions {
-    /** overwrite or pass your own mappings */
-    mappings?: Mappings;
-    /** RegExp flags, i, u, m, etc. g is always set regardless */
-    flags?: string;
-}
-
 export interface StringOptions {
     /** overwrite or pass your own mappings */
     mappings?: Mappings;
 }
 
+export interface RegexOptions extends StringOptions {
+    /** RegExp flags, i, u, m, etc. g is always set regardless */
+    flags?: string;
+}
+
 function mergeMappings(innerMappings?: Mappings) {
-    var base: Mappings = {};
+    let base: Mappings = {};
 
     for (let mapping in mappings) {
         base[mapping] = mappings[mapping];
@@ -36,26 +34,28 @@ function mergeMappings(innerMappings?: Mappings) {
 
     if (innerMappings) {
         for (let mapping in innerMappings) {
-            base[innerMappings[mapping]] = innerMappings[mapping];
+            base[mapping] = innerMappings[mapping];
         }
     }
 
-    return Object.keys(base).map((e) => {
-        return base[e];
-    });
+    return base;
 }
 
-function replacer(input: string, mappings: string[]): string {
+function replacer(input: string, mappings: Mappings): string {
     return input.split('').map((letter: string) => {
-        return mappings.reduce((e, mapping) => {
-            return mapping && mapping !== letter && mapping.indexOf(letter) !== -1 ? `[${mapping}]` : e;
-        }, letter);
+        for (const mapping in mappings) {
+            if (mapping && mapping !==  mappings[mapping] && (mapping === letter || mappings[mapping].indexOf(letter) !== -1)) {
+                letter = Array.isArray(mappings[mapping]) ? (<string[]>mappings[mapping]).join('') : `[${mappings[mapping]}]`;
+                break;
+            }
+        }
+        return letter;
     }).join('');
 }
 
 /** Generate a function that returns a RegExp, that can be reused with the same options */
 export function toRegex(options: RegexOptions = {}) {
-    var innerMappings = mergeMappings(typeof options.mappings === 'object' ? options.mappings : null);
+    let innerMappings = mergeMappings(typeof options.mappings === 'object' ? options.mappings : null);
 
     return (input: string): RegExp => {
         return new RegExp(replacer(input, innerMappings), typeof options.flags === 'string' ? options.flags : 'i');
@@ -64,7 +64,7 @@ export function toRegex(options: RegexOptions = {}) {
 
 /** Generate a function that returns a string, that can be reused with the same options */
 export function toString(options: StringOptions = {}) {
-    var innerMappings = mergeMappings(typeof options.mappings === 'object' ? options.mappings : null);
+    let innerMappings = mergeMappings(typeof options.mappings === 'object' ? options.mappings : null);
 
     return (input: string): string => {
         return replacer(input, innerMappings);

@@ -26,12 +26,15 @@ describe('diacritic-regex', function(){
 
         it('allows new mappings', function(){
 
-            expect(lib.toRegex({
+            var tr = lib.toRegex({
                 mappings: {
                     '~': '/~`',
                     't': 'tT'
                 }
-            })('~lt').toString()).to.equal('/[\\/~`]l[tT]/i')
+            })
+
+            expect(tr('~lt').toString()).to.equal('/[\\/~`]l[tT]/i')
+            expect(tr('~lt').test('omg `lT')).to.equal(true)
 
         })
 
@@ -65,6 +68,25 @@ describe('diacritic-regex', function(){
                     'e': 'e'
                 }
             })('e')).to.equal('e')
+
+            var ts = lib.toString({
+                mappings: {
+                    '*': ['\\S+'],
+                    'e': ['e']
+                }
+            });
+
+            expect(ts('e*e')).to.equal('e\\S+e')
+            expect(new RegExp(ts('jogue * bola')).test('jogue poké bola')).to.equal(true)
+
+            ts = lib.toString({
+                mappings: {
+                    '*': ['\\w+','\\d+']
+                }
+            });
+
+            expect(ts('e*e')).to.equal('[' + lib.mappings.e + ']\\w+\\d+[' + lib.mappings.e + ']')
+            expect(new RegExp(ts('jogue * bola')).test('jogue zzzz0 bola')).to.equal(true)
 
         })
 

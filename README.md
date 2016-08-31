@@ -29,9 +29,10 @@ toRegex({
 
 toString({
     mappings: {
-        'u': 'u'
+        '*': ['\\S+'] // literals, won't try to wrap in []'s,
+        'u': ['u']
     }
-})('résumé') // => 'r[eEÉéÈèÊêëË]sum[eEÉéÈèÊêëË]'
+})('résumé*') // => 'r[eEÉéÈèÊêëË]sum[eEÉéÈèÊêëË]\S+'
 ```
 
 ## Compatibility
