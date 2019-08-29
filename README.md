@@ -35,9 +35,23 @@ toString({
 })('résumé*') // => 'r[eEÉéÈèÊêëË]sum[eEÉéÈèÊêëË]\S+'
 ```
 
+If you want to change the mappings for all instances:
+
+```ts
+import { mappings } from 'diacritic-regex'
+
+mappings['*'] = ['[\\S\\s]+']
+```
+
+## Caveats
+
+Be aware of [RegExp.prototype.exec](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) with `g` flag being stateful
+
+The `i` flag is appended to the RegExp flags if you don't pass any flags to `toRegex`
+
 ## Compatibility
 
-Work in node and the browser, but needs polyfills for `Array.reduce`, `Array.map` and `Object.keys`
+Work in node and the browser, but needs polyfills for `Array.reduce`, `Array.map` and `Object.keys` depending on how old your target browser is
 
 ## License
 

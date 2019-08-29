@@ -1,13 +1,21 @@
 export interface Mappings {
     [index: string]: string | string[];
 }
-export declare const mappings: Mappings;
+/**
+ * expect the transliterated value as key, and a string with replacements
+ */
+export declare let mappings: Mappings;
 export interface StringOptions {
-    /** overwrite or pass your own mappings */
+    /**
+     * overwrite or pass your own mappings.
+     * existing mappings will be overwritten, else it'll be appended to defaults
+     */
     mappings?: Mappings;
 }
 export interface RegexOptions extends StringOptions {
-    /** RegExp flags, i, u, m, etc. g is always set regardless */
+    /**
+     * RegExp flags, ium. Defaults to i
+     */
     flags?: string;
 }
 /** Generate a function that returns a RegExp, that can be reused with the same options */

@@ -1,24 +1,30 @@
 {
   "name": "diacritic-regex",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "String to a regex that is diacritic insensitive",
   "main": "./index.js",
   "scripts": {
-    "test": "mocha -R spec test.js",
-    "compile": "tsc -p tsconfig.json"
+    "test": "mocha -R spec index.test.js",
+    "compile": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run compile"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pocesar/js-diacritic-regex.git"
   },
   "devDependencies": {
-    "mocha": "^3.0.2",
-    "chai": "^3.5.0",
-    "typescript": "^1.8.10"
+    "@types/mocha": "^5.2.7",
+    "@types/chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "chai": "^4.2.0",
+    "typescript": "^3.6.2"
   },
   "keywords": [
     "diacritic",
     "regex",
+    "accent",
+    "regular expression",
+    "transliteration",
     "string",
     "ascii",
     "collation"

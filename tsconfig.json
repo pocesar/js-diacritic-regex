@@ -6,6 +6,7 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": true,
         "noUnusedLocals": true,
+        "downlevelIteration": true,
         "rootDir": ".",
         "outDir": ".",
         "sourceMap": false,
