@@ -9,7 +9,7 @@
         "downlevelIteration": true,
         "rootDir": ".",
         "outDir": ".",
-        "sourceMap": false,
+        "sourceMap": true,
         "declaration": true
     },
     "exclude": [
