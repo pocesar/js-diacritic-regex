@@ -8,7 +8,7 @@
 })(function (require, exports) {
     'use strict';
     exports.mappings = {
-        'a': String.fromCharCode(65, 97, 192, 224, 193, 225, 194, 226, 195, 227, 196, 228),
+        'a': String.fromCharCode(65, 97, 192, 224, 193, 225, 194, 226, 195, 227, 196, 228, 229, 258, 259),
         'e': String.fromCharCode(69, 101, 200, 232, 201, 233, 202, 234, 203, 235),
         'i': String.fromCharCode(73, 105, 204, 236, 205, 237, 206, 238, 207, 239),
         'o': String.fromCharCode(79, 111, 210, 242, 211, 243, 212, 244, 213, 245, 214, 246),
