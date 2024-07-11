@@ -1,10 +1,9 @@
 {
     "compilerOptions": {
         "module": "umd",
-        "target": "es5",
+        "target": "ES2015",
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "noImplicitUseStrict": true,
         "noUnusedLocals": true,
         "downlevelIteration": true,
         "rootDir": ".",

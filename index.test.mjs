@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const lib = require('./index');
+import { expect } from 'chai';
+import lib from './index.js';
 
 describe('diacritic-regex', function () {
 
@@ -33,7 +33,7 @@ describe('diacritic-regex', function () {
         }
       })
 
-      expect(tr('~lt').toString()).to.equal('/[\\/~`]l[tT]/i')
+      expect(tr('~lt').toString()).to.equal('/[/~`]l[tT]/i')
       expect(tr('~lt').test('omg `lT')).to.equal(true)
 
     })
